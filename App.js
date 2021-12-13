@@ -1,9 +1,9 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { useColorScheme } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import themes from "./styles/theme";
-import { View, StyleSheet, useColorScheme } from "react-native";
+import HomeScreen from "./components/home";
 
 const Drawer = createDrawerNavigator();
 
@@ -21,27 +21,10 @@ const App = () => {
   return (
     <NavigationContainer theme={theme}>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen
-          name="Home"
-          component={({ navigation }) => {
-            return (
-              <View style={styles.container}>
-                <StatusBar style={scheme === "dark" ? "light" : "dark"} />
-              </View>
-            );
-          }}
-        />
+        <Drawer.Screen name="Home" component={HomeScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
 
 export default App;
