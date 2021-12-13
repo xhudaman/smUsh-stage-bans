@@ -1,25 +1,23 @@
 const light = {
   dark: false,
   colors: {
-    primary: "#c44b4b",
-    secondary: "#e4e4e4",
-    text: "#616161",
-    textSecondary: "#a7a7a7",
-    textSecondaryContrast: "#e4a5a5",
-    headerText: "#e6e6e6",
-    background: "#ececec"
+    primary: "hsl(256, 79%, 34%)",
+    card: "hsl(0, 0%, 89%)",
+    text: "hsl(0, 0%, 38%)",
+    textSecondary: "hsl(0, 0%, 65%)",
+    headerText: "hsl(0, 0%, 90%)",
+    background: "hsl(0, 0%, 92%)"
   }
 };
 
 const dark = {
   dark: true,
   colors: {
-    primary: "#c44b4b",
-    secondary: "#424242",
-    text: "#e6e6e6",
-    textSecondary: "#9a9a9a",
-    textSecondaryContrast: "#e4a5a5",
-    background: "#505050"
+    primary: "hsl(256, 79%, 80%)",
+    background: "hsl(0, 0%, 25%)",
+    text: "hsl(0, 0%, 90%)",
+    textSecondary: "hsl(0, 0%, 65%)",
+    card: "hsl(0, 0%, 31%)"
   }
 };
 
