@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  app:
+    network_mode: host
+    build:
+      context: ./
+      target: dev
+    working_dir: /src
+    command: sh -c 'expo login -u $EXPO_USER -p $EXPO_PASSWORD && sh -c "yarn install --immutable --production=false && expo start"'
+    volumes:
+      - ${PWD}:/src
+    ports:
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+    environment:
+      NODE_ENV: development
+    tmpfs:
+      - /cache/yarn
