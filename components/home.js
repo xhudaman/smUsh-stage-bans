@@ -4,11 +4,22 @@ import {
   View,
   Text,
   Pressable,
+  Image,
   StyleSheet,
   useColorScheme
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { getStages } from "../scripts/stages";
+
+const images = {
+  fd: require("../assets/stage-images/fd.png"),
+  bf: require("../assets/stage-images/bf.png"),
+  sv: require("../assets/stage-images/sv.png"),
+  tc: require("../assets/stage-images/tc.png"),
+  ps2: require("../assets/stage-images/ps2.png"),
+  ys: require("../assets/stage-images/ys.png"),
+  kpl: require("../assets/stage-images/kpl.png")
+};
 
 const HomeScreen = ({ navigation }) => {
   const { starters, counters } = getStages();
@@ -35,6 +46,8 @@ const HomeScreen = ({ navigation }) => {
     setSelectedStages([...selectedStages, slug]);
   };
 
+  const isSelected = slug => selectedStages.includes(slug);
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -47,23 +60,24 @@ const HomeScreen = ({ navigation }) => {
       textAlign: "center",
       padding: "4%"
     },
-    card: {
-      backgroundColor: "red",
-      aspectRatio: 1.5,
-      height: "25%",
-      borderRadius: 8,
-      margin: 8
-    },
     cardContainer: {
       width: "100%",
       height: "60%",
       flexDirection: "row",
       flexWrap: "wrap",
-      justifyContent: "center"
+      justifyContent: "center",
+      resizeMode: "cover"
     },
+    card: {
+      aspectRatio: 1.5,
+      height: "25%",
+      borderRadius: 8,
+      margin: 8
+    },
+    cardTitle: { textAlign: "center", color: colors.text },
     counters: { height: "35%" },
     selected: {
-      backgroundColor: "blue"
+      opacity: 0.4
     }
   });
 
@@ -72,7 +86,8 @@ const HomeScreen = ({ navigation }) => {
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
       <View
         style={{
-          height: "100%"
+          height: "100%",
+          paddingVertical: "5%"
         }}
       >
         <Text style={styles.header}>Starters</Text>
@@ -82,14 +97,11 @@ const HomeScreen = ({ navigation }) => {
               key={stage.slug}
               onPress={() => handleCardPress(stage.slug)}
             >
-              <View
-                style={[
-                  styles.card,
-                  selectedStages.includes(stage.slug) && styles.selected
-                ]}
-              >
-                <Text>{stage.name}</Text>
-              </View>
+              <Image
+                source={images[stage.slug]}
+                style={[styles.card, isSelected(stage.slug) && styles.selected]}
+              />
+              <Text style={styles.cardTitle}>{stage.name}</Text>
             </Pressable>
           ))}
         </View>
@@ -100,16 +112,15 @@ const HomeScreen = ({ navigation }) => {
               key={stage.slug}
               onPress={() => handleCardPress(stage.slug)}
             >
-              <View
-                key={stage.slug}
+              <Image
+                source={images[stage.slug]}
                 style={[
                   styles.card,
                   styles.counters,
-                  selectedStages.includes(stage.slug) && styles.selected
+                  isSelected(stage.slug) && styles.selected
                 ]}
-              >
-                <Text>{stage.name}</Text>
-              </View>
+              />
+              <Text style={styles.cardTitle}>{stage.name}</Text>
             </Pressable>
           ))}
         </View>
