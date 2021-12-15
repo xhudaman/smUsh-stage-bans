@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { getStages } from "../scripts/stages";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const images = {
   fd: require("../assets/stage-images/fd.png"),
@@ -86,6 +87,20 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
+      {selectedStages.length > 0 && (
+        <Pressable
+          style={[
+            {
+              position: "absolute",
+              top: "4%",
+              right: "8%"
+            }
+          ]}
+          onPress={() => setSelectedStages([])}
+        >
+          <FontAwesome5 name="undo-alt" size={22} color={colors.text} />
+        </Pressable>
+      )}
       <Text style={styles.header}>Starters</Text>
       <View style={styles.cardContainer}>
         {starterPicks.map(stage => (
