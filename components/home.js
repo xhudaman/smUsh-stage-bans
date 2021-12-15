@@ -52,13 +52,14 @@ const HomeScreen = ({ navigation }) => {
     container: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "center"
+      paddingVertical: "4%"
     },
     header: {
       fontSize: 26,
       color: colors.text,
       textAlign: "center",
-      padding: "4%"
+      paddingHorizontal: "4%",
+      paddingVertical: "1%"
     },
     cardContainer: {
       width: "100%",
@@ -66,6 +67,7 @@ const HomeScreen = ({ navigation }) => {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "center",
+      alignItems: "center",
       resizeMode: "cover"
     },
     card: {
@@ -75,7 +77,7 @@ const HomeScreen = ({ navigation }) => {
       margin: 8
     },
     cardTitle: { textAlign: "center", color: colors.text },
-    counters: { height: "35%" },
+    counters: { height: "37.5%" },
     selected: {
       opacity: 0.4
     }
@@ -84,46 +86,39 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
-      <View
-        style={{
-          height: "100%",
-          paddingVertical: "5%"
-        }}
-      >
-        <Text style={styles.header}>Starters</Text>
-        <View style={styles.cardContainer}>
-          {starterPicks.map(stage => (
-            <Pressable
-              key={stage.slug}
-              onPress={() => handleCardPress(stage.slug)}
-            >
-              <Image
-                source={images[stage.slug]}
-                style={[styles.card, isSelected(stage.slug) && styles.selected]}
-              />
-              <Text style={styles.cardTitle}>{stage.name}</Text>
-            </Pressable>
-          ))}
-        </View>
-        <Text style={styles.header}>Counters</Text>
-        <View style={[styles.cardContainer, { height: "40%" }]}>
-          {counterPicks.map(stage => (
-            <Pressable
-              key={stage.slug}
-              onPress={() => handleCardPress(stage.slug)}
-            >
-              <Image
-                source={images[stage.slug]}
-                style={[
-                  styles.card,
-                  styles.counters,
-                  isSelected(stage.slug) && styles.selected
-                ]}
-              />
-              <Text style={styles.cardTitle}>{stage.name}</Text>
-            </Pressable>
-          ))}
-        </View>
+      <Text style={styles.header}>Starters</Text>
+      <View style={styles.cardContainer}>
+        {starterPicks.map(stage => (
+          <Pressable
+            key={stage.slug}
+            onPress={() => handleCardPress(stage.slug)}
+          >
+            <Image
+              source={images[stage.slug]}
+              style={[styles.card, isSelected(stage.slug) && styles.selected]}
+            />
+            <Text style={styles.cardTitle}>{stage.name}</Text>
+          </Pressable>
+        ))}
+      </View>
+      <Text style={[styles.header, { paddingTop: "4%" }]}>Counters</Text>
+      <View style={[styles.cardContainer, { height: "40%" }]}>
+        {counterPicks.map(stage => (
+          <Pressable
+            key={stage.slug}
+            onPress={() => handleCardPress(stage.slug)}
+          >
+            <Image
+              source={images[stage.slug]}
+              style={[
+                styles.card,
+                styles.counters,
+                isSelected(stage.slug) && styles.selected
+              ]}
+            />
+            <Text style={styles.cardTitle}>{stage.name}</Text>
+          </Pressable>
+        ))}
       </View>
     </View>
   );
