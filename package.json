@@ -8,6 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "setup:dependencies": "yarn global add expo-cli && yarn install --frozen-lockfile --non-interactive",
+    "expo:publish:staging": "expo publish --release-channel staging",
+    "expo:publish:production": "expo publish --release-channel production",
     "eject": "expo eject"
   },
   "dependencies": {
