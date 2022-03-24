@@ -2,34 +2,38 @@ export const getStages = () => {
   return {
     starters: [
       {
+        name: "Battlefield",
+        slug: "bf"
+      },
+      {
         name: "Final Destination",
         slug: "fd"
       },
       {
-        name: "Battlefield",
-        slug: "bf"
+        name: "Small Battlefield",
+        slug: "sbf"
       },
+      {
+        name: "Pokemon Stadium 2",
+        slug: "ps2"
+      },
+      {
+        name: "Hollow Bastion",
+        slug: "hb"
+      }
+    ],
+    counters: [
       {
         name: "Smashville",
         slug: "sv"
       },
       {
+        name: "Kalos",
+        slug: "kpl"
+      },
+      {
         name: "Town & City",
         slug: "tc"
-      },
-      {
-        name: "Pokemon Stadium 2",
-        slug: "ps2"
-      }
-    ],
-    counters: [
-      {
-        name: "Yoshi's Story",
-        slug: "ys"
-      },
-      {
-        name: "Kalos Pokemon League",
-        slug: "kpl"
       }
     ]
   };

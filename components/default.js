@@ -15,14 +15,16 @@ import { FontAwesome5 } from "@expo/vector-icons";
 const images = {
   fd: require("../assets/stage-images/fd.png"),
   bf: require("../assets/stage-images/bf.png"),
+  sbf: require("../assets/stage-images/sbf.jpg"),
   sv: require("../assets/stage-images/sv.png"),
   tc: require("../assets/stage-images/tc.png"),
   ps2: require("../assets/stage-images/ps2.png"),
   ys: require("../assets/stage-images/ys.png"),
-  kpl: require("../assets/stage-images/kpl.png")
+  kpl: require("../assets/stage-images/kpl.png"),
+  hb: require("../assets/stage-images/hb.jpg")
 };
 
-const HomeScreen = ({ navigation }) => {
+const DefaultScreen = ({ navigation }) => {
   const { starters, counters } = getStages();
 
   const [starterPicks] = useState(starters);
@@ -56,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
       paddingVertical: "4%"
     },
     header: {
-      fontSize: 26,
+      fontSize: 20,
       color: colors.text,
       textAlign: "center",
       paddingHorizontal: "4%",
@@ -64,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
     },
     cardContainer: {
       width: "100%",
-      height: "60%",
+      height: "50%",
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "center",
@@ -78,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
       margin: 8
     },
     cardTitle: { textAlign: "center", color: colors.text },
-    counters: { height: "37.5%" },
+    counters: { height: "35%" },
     selected: {
       opacity: 0.4
     }
@@ -116,8 +118,8 @@ const HomeScreen = ({ navigation }) => {
           </Pressable>
         ))}
       </View>
-      <Text style={[styles.header, { paddingTop: "4%" }]}>Counters</Text>
-      <View style={[styles.cardContainer, { height: "40%" }]}>
+      <Text style={[styles.header, { paddingTop: "7%" }]}>Counters</Text>
+      <View style={[styles.cardContainer, { height: "35.7%" }]}>
         {counterPicks.map(stage => (
           <Pressable
             key={stage.slug}
@@ -139,4 +141,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default DefaultScreen;
